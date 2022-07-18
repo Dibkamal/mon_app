@@ -1,0 +1,10 @@
+
+To set a memory limit:
+
+--memory="1000M"
+
+To restrict CPU usage
+
+--cpus=X
+
+où X est le nombre de CPU mis à disposition pour ce conteneur.

@@ -1,0 +1,2 @@
+RUN useradd -d /home/myappuser -m -s /bin/bash myappuser
+USER myappuser

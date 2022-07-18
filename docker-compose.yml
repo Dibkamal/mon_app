@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - PORT=3009
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PW=kamal
+      #- JWT_SECRET=test  
+    ports:
+      - 3009:3009
+    depends_on:
+      - postgres
+    restart: always
+    
+    command: npm start 
+    networks:
+     - backend
+    env_file: 
+     - .env
+ 
+
+  postgres:
+    image: postgres:latest
+    restart: always
+    environment:
+      - DB_USER=postgres
+      - POSTGRES_PASSWORD=kamal
+      - POSTGRES_DB=feedDB
+    ports:
+      - 5432:5432 
+    networks:
+     - backend
+networks:
+  backend:
